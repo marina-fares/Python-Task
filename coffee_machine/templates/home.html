@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+
+ <!-- job_listing_area_start  -->
+    <div class="job_listing_area plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5" style='background-color:#DCDCDC;margin:20px;border-radius:5px'>
+                    <div class="white-bg">
+                        <div class="form_inner white-bg">
+                            <h3>Filter</h3>
+                            <form action="#" method='GET'>
+                                {% csrf_token %}
+                                {% bootstrap_form machines.form%}   
+                                {% buttons %}
+                                <button class="boxed-btn3 w-100 mt-2 btn btn-success" type="submit">Search</button>
+                                {% endbuttons %}
+                            </form>
+                        </div>    
+                    </div>
+                </div>
+
+                <div class='col-lg-6' style='background-color:#DCDCDC;padding:10px;border-radius:5px;margin:20px'>
+                    {% for machine in machine_list%}
+                        <div class='card' style='margin:20px;padding:5px'>
+                        {{machine | upper}}
+                        </div>
+                    {% endfor%}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- job_listing_area_end  -->
+
+
+
+
+{% endblock  %}
